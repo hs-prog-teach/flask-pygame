@@ -26,7 +26,7 @@ def hello_world():
 @app.route("/say-hi/<name>")
 def say_hi(name):
     # my_name = input("Enter your name: ")
-    return f"<b>Hi, {name} from {my_name}!</b>"
+    return f"<b>Hi, {name}</b>"
 
 @app.route("/board")
 def show_board():
