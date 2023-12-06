@@ -5,12 +5,10 @@ from flask import Flask, render_template
 import pygame
 
 app = Flask(__name__)
-
-@app.route("/"  )
+pygame.init()
+screen = pygame.display.set_mode((300, 300))
+@app.route("/")
 def hello_world():
-    pygame.init()
-    screen = pygame.display.set_mode((300, 300))
-
     color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
     screen.fill((0,0,0))
@@ -26,8 +24,11 @@ def hello_world():
 @app.route("/say-hi/<name>")
 def say_hi(name):
     # my_name = input("Enter your name: ")
-    return f"<b>Hi, {name} from {my_name}!</b>"
+    return f"<b>Hi, {name} from!</b>"
 
 @app.route("/board")
 def show_board():
     return render_template('board-page.html', name="Serhii")
+
+if __name__ == "__main__":
+    app.run()
