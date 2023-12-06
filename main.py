@@ -10,27 +10,26 @@ pygame.init()
 
 screen = pygame.display.set_mode((300, 300))
 
-@app.route("/"  )
-def hello_world():
+@app.route("/<color>" )
+def hello_world(color):
     
-
     color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-
+    color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
     screen.fill((0,0,0))
     pygame.draw.circle(screen, color, (150, 150), 100)
     pygame.display.flip()
 
+
+@app.route("/circle")
+def say_hi():
+    color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+    screen.fill((0,0,0))
+    pygame.draw.circle(screen, color, (150, 150), 100)
+    pygame.display.flip()
+
+@app.route("/image")
+def show_board():
     image_name = "screen.jpg"
     pygame.image.save(screen, f"static/{image_name}")
 
     return render_template('generated-image.html', image_file=image_name)
-
-
-@app.route("/say-hi/<name>")
-def say_hi(name):
-    # my_name = input("Enter your name: ")
-    return f"<b>Hi, {name}</b>"
-
-@app.route("/board")
-def show_board():
-    return render_template('board-page.html', name="Serhii")
