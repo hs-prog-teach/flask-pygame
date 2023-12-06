@@ -7,12 +7,10 @@ import pygame
 app = Flask(__name__)
 pygame.init()
 screen = pygame.display.set_mode((300, 300))
-@app.route("/")
-def hello_world():
-    color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-
+@app.route("/<radius>/<color>/<x>/<y>")
+def hello_world(radius,color,x,y):
     screen.fill((0,0,0))
-    pygame.draw.circle(screen, color, (150, 150), 50)
+    pygame.draw.circle(screen, color, (int(x), int(y)), int(radius))
     pygame.display.flip()
 
     image_name = "screen.jpg"
