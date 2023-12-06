@@ -1,7 +1,6 @@
 import random
 
 from flask import Flask, render_template
-
 import pygame
 
 app = Flask(__name__)
