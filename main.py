@@ -6,15 +6,18 @@ import pygame
 
 app = Flask(__name__)
 
+pygame.init()
+
+screen = pygame.display.set_mode((300, 300))
+
 @app.route("/"  )
 def hello_world():
-    pygame.init()
-    screen = pygame.display.set_mode((300, 300))
+    
 
     color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
     screen.fill((0,0,0))
-    pygame.draw.circle(screen, color, (150, 150), 50)
+    pygame.draw.circle(screen, color, (150, 150), 100)
     pygame.display.flip()
 
     image_name = "screen.jpg"
